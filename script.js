@@ -1,4 +1,4 @@
-// GANTI TEKS DI DALAM TANDA KUTIP DENGAN URL DEPLOYMENT APPS SCRIPT KAMU
+// URL Deployment Apps Script milikmu
 const API_URL = "https://script.google.com/macros/s/AKfycbwpDb67-YhdpWJ0S04TXbLMmop2r8Ii15hsSCdONz8uiZh17u7N9g-oIneoG6DnKQzH/exec";
 
 // Fungsi untuk format Rupiah
@@ -18,6 +18,7 @@ async function muatKatalog() {
         data.forEach(kue => {
             const card = document.createElement('div');
             card.className = 'card';
+            // Buka modal saat card diklik
             card.onclick = () => bukaModal(kue.nama);
             
             card.innerHTML = `
@@ -29,7 +30,7 @@ async function muatKatalog() {
             grid.appendChild(card);
         });
     } catch (error) {
-        document.getElementById('loader').innerText = "Gagal memuat katalog. Pastikan URL Apps Script benar.";
+        document.getElementById('loader').innerText = "Gagal memuat katalog. Pastikan URL Apps Script benar dan Google Sheets sudah diisi.";
     }
 }
 
