@@ -11,12 +11,12 @@ header p { color: #777; font-size: 14px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 25px; }
 
 /* Card Kue */
-.card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease; text-align: center; padding-bottom: 15px; cursor: pointer; }
+.card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease; text-align: center; padding-bottom: 15px; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; }
 .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
 .card img { width: 100%; height: 200px; object-fit: cover; }
 .card h3 { font-size: 16px; margin: 15px 10px 5px; font-weight: 600; color: #222; }
-.card .harga { color: #555; font-size: 15px; font-weight: 600; }
-.btn-pesan { margin-top: 15px; background: #d35400; color: #fff; border: none; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: background 0.3s; }
+.card .harga { color: #555; font-size: 15px; font-weight: 600; margin-bottom: 10px;}
+.btn-pesan { margin: 0 15px 15px 15px; background: #d35400; color: #fff; border: none; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: background 0.3s; }
 .btn-pesan:hover { background: #b84a00; }
 
 /* Loader */
