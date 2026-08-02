@@ -1,6 +1,5 @@
 // URL Deployment Apps Script milikmu
 const API_URL = "https://script.google.com/macros/s/AKfycbzUqodnKnwh_skwbbGgOR4lWvVMeZDoUuEzLvO3NmtFPlWsAbLkE7uzGbJPzP9-9G5H/exec";
-
 // Fungsi untuk format Rupiah
 const formatRupiah = (angka) => {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka);
@@ -18,14 +17,15 @@ async function muatKatalog() {
         data.forEach(kue => {
             const card = document.createElement('div');
             card.className = 'card';
-            // Buka modal saat card diklik
             card.onclick = () => bukaModal(kue.nama);
             
             card.innerHTML = `
                 <img src="${kue.gambar}" alt="${kue.nama}">
-                <h3>${kue.nama}</h3>
-                <p class="harga">${formatRupiah(kue.harga)}</p>
-                <button class="btn-pesan">Pesan</button>
+                <div class="card-body">
+                    <h3>${kue.nama}</h3>
+                    <p class="harga">${formatRupiah(kue.harga)}</p>
+                    <button class="btn-pesan">Pesan Sekarang</button>
+                </div>
             `;
             grid.appendChild(card);
         });
@@ -44,12 +44,13 @@ function tutupModal() {
     document.getElementById('modal').style.display = 'none';
 }
 
-// Fungsi mengirim data pesanan ke Google Sheets
+// Fungsi mengirim data pesanan ke Google Sheets dengan Notifikasi Modern
 async function kirimPesanan(event) {
     event.preventDefault();
     
     const btn = document.getElementById('btnSubmit');
-    btn.innerText = "Mengirim...";
+    const originalText = btn.innerText;
+    btn.innerText = "Mengirim Pesanan...";
     btn.style.background = "#95a5a6";
     btn.disabled = true;
 
@@ -65,16 +66,36 @@ async function kirimPesanan(event) {
             body: JSON.stringify(dataPesanan)
         });
         
-        alert("Pesanan berhasil dikirim! Kami akan segera menghubungi Anda.");
-        document.getElementById('formPesanan').reset();
         tutupModal();
+        document.getElementById('formPesanan').reset();
+        
+        // Tampilkan Notifikasi Modern
+        tampilkanNotifikasi("Pesanan Berhasil! 🎉 Kami akan segera menghubungi Anda.");
+        
     } catch (error) {
-        alert("Terjadi kesalahan. Silakan coba lagi.");
+        alert("Terjadi kesalahan jaringan. Silakan coba lagi.");
     } finally {
-        btn.innerText = "Kirim Pesanan";
-        btn.style.background = "#27ae60";
+        btn.innerText = originalText;
+        btn.style.background = "#d35400";
         btn.disabled = false;
     }
+}
+
+// Fungsi untuk menampilkan Toast Notifikasi Modern
+function tampilkanNotifikasi(pesan) {
+    let notif = document.getElementById('toast-notif');
+    if (!notif) {
+        notif = document.createElement('div');
+        notif.id = 'toast-notif';
+        document.body.appendChild(notif);
+    }
+    
+    notif.innerText = pesan;
+    notif.className = 'toast-show';
+    
+    setTimeout(() => {
+        notif.className = notif.className.replace('toast-show', '');
+    }, 4000);
 }
 
 // Menjalankan fungsi muat katalog otomatis saat halaman dibuka
