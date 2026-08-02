@@ -1,7 +1,5 @@
 // URL Deployment Apps Script milikmu
 const API_URL = "https://script.google.com/macros/s/AKfycbyYT1kUQWsfXmksdK_mxfSvz98BYJtlIUod5yidmtGH148qHwZqqo5p-XdWHM3X7wdg/exec";
-// URL Deployment Apps Script milikmu
-const API_URL = "https://script.google.com/macros/s/AKfycbwpDb67-YhdpWJ0S04TXbLMmop2r8Ii15hsSCdONz8uiZh17u7N9g-oIneoG6DnKQzH/exec";
 
 let semuaKue = []; // Menyimpan data master katalog
 
