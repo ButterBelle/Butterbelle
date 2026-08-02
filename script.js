@@ -34,7 +34,7 @@ async function muatKatalog() {
     }
 }
 
-// Fungsi untuk membuka dan menutup popup form
+// Fungsi untuk membuka dan menutup popup form pesanan
 function bukaModal(namaKue) {
     document.getElementById('inputPesanan').value = namaKue;
     document.getElementById('modal').style.display = 'flex';
@@ -42,6 +42,15 @@ function bukaModal(namaKue) {
 
 function tutupModal() {
     document.getElementById('modal').style.display = 'none';
+}
+
+// Fungsi untuk membuka dan menutup modal Proposal Kerjasama
+function bukaProposal() {
+    document.getElementById('modalProposal').style.display = 'flex';
+}
+
+function tutupProposal() {
+    document.getElementById('modalProposal').style.display = 'none';
 }
 
 // Fungsi mengirim data pesanan ke Google Sheets dengan Notifikasi Modern
