@@ -30,7 +30,14 @@ async function muatKatalog() {
         document.getElementById('loader').innerText = "Gagal memuat katalog. Periksa koneksi atau URL Apps Script.";
     }
 }
-
+// Fungsi Pencarian (Search Filter)
+function filterKatalog() {
+    const keyword = document.getElementById('searchInput').value.toLowerCase();
+    const kueTerpilih = semuaKue.filter(kue => 
+        kue.nama.toLowerCase().includes(keyword)
+    );
+    tampilkanKatalog(kueTerpilih);
+}
 function bukaModal(namaKue) {
     document.getElementById('inputPesanan').value = namaKue;
     document.getElementById('modal').style.display = 'flex';
