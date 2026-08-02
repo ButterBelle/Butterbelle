@@ -1,43 +1,60 @@
 // URL Deployment Apps Script milikmu
 const API_URL = "https://script.google.com/macros/s/AKfycbyYT1kUQWsfXmksdK_mxfSvz98BYJtlIUod5yidmtGH148qHwZqqo5p-XdWHM3X7wdg/exec";
 
-let semuaKue = []; // Menyimpan data master katalog
+let semuaKue = []; // Menyimpan master data untuk pencarian
 
-// Fungsi format Rupiah
+// Format Rupiah
 const formatRupiah = (angka) => {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka);
 }
 
-// Fungsi utama mengambil data dari Google Sheets
+// Tarik data dari Google Sheets
 async function muatKatalog() {
     try {
         const response = await fetch(API_URL);
         const data = await response.json();
         
-        console.log("Data berhasil ditarik dari API:", data); // Cek di Inspect Console browser
+        semuaKue = data; // Simpan data untuk search
         
-        // Simpan data ke variabel global
-        semuaKue = data;
-        
+        const grid = document.getElementById('katalog-grid');
         document.getElementById('loader').style.display = 'none';
-        tampilkanKatalog(semuaKue);
+        grid.innerHTML = "";
+
+        data.forEach(kue => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            
+            card.innerHTML = `
+                <img src="${kue.gambar}" alt="${kue.nama}" onerror="this.src='https://via.placeholder.com/200?text=Foto+Kue'">
+                <div class="card-body">
+                    <h3>${kue.nama}</h3>
+                    <p class="harga">${formatRupiah(kue.harga)}</p>
+                    <button class="btn-pesan" onclick="bukaModal('${kue.nama}')">Pesan Sekarang</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
     } catch (error) {
-        console.error("Gagal memuat katalog:", error);
-        document.getElementById('loader').innerText = "Gagal memuat katalog. Pastikan URL Apps Script benar.";
+        document.getElementById('loader').innerText = "Gagal memuat katalog. Periksa koneksi atau URL Apps Script.";
     }
 }
 
-// Fungsi untuk menampilkan kartu kue ke HTML
-function tampilkanKatalog(dataKue) {
+// Fungsi Pencarian (Search Filter) yang Aman
+function filterKatalog() {
+    const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
     const grid = document.getElementById('katalog-grid');
-    grid.innerHTML = ""; // Bersihkan grid sebelum diisi ulang
+    grid.innerHTML = "";
 
-    if (!dataKue || dataKue.length === 0) {
+    const hasilFilter = semuaKue.filter(kue => 
+        kue.nama.toLowerCase().includes(keyword)
+    );
+
+    if (hasilFilter.length === 0) {
         grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #888; padding: 30px;">Menu kue tidak ditemukan.</p>`;
         return;
     }
 
-    dataKue.forEach(kue => {
+    hasilFilter.forEach(kue => {
         const card = document.createElement('div');
         card.className = 'card';
         
@@ -46,27 +63,11 @@ function tampilkanKatalog(dataKue) {
             <div class="card-body">
                 <h3>${kue.nama}</h3>
                 <p class="harga">${formatRupiah(kue.harga)}</p>
-                <button class="btn-pesan" onclick="bukaModal('${kue.nama.replace(/'/g, "\\'")}')">Pesan Sekarang</button>
+                <button class="btn-pesan" onclick="bukaModal('${kue.nama}')">Pesan Sekarang</button>
             </div>
         `;
         grid.appendChild(card);
     });
-}
-
-// Fungsi Pencarian (Search Filter) - Otomatis jalan saat diketik
-function filterKatalog() {
-    const inputElement = document.getElementById('searchInput');
-    if (!inputElement) return;
-
-    const keyword = inputElement.value.toLowerCase().trim();
-    console.log("Mencari keyword:", keyword); // Cek ketikan di Inspect Console
-
-    const hasilFilter = semuaKue.filter(kue => {
-        const namaKue = kue.nama ? kue.nama.toLowerCase() : "";
-        return namaKue.includes(keyword);
-    });
-
-    tampilkanKatalog(hasilFilter);
 }
 
 // Fungsi Modal Form Pesanan
@@ -88,7 +89,7 @@ function tutupProposal() {
     document.getElementById('modalProposal').style.display = 'none';
 }
 
-// Fungsi Kirim Pesanan ke Google Sheets
+// Kirim Pesanan ke Google Sheets
 async function kirimPesanan(event) {
     event.preventDefault();
     
@@ -121,7 +122,7 @@ async function kirimPesanan(event) {
     }
 }
 
-// Fungsi Toast Notifikasi
+// Notifikasi Toast
 function tampilkanNotifikasi(pesan) {
     let notif = document.getElementById('toast-notif');
     if (!notif) {
@@ -138,5 +139,5 @@ function tampilkanNotifikasi(pesan) {
     }, 4000);
 }
 
-// Jalankan saat halaman siap
+// Jalankan saat halaman dimuat
 muatKatalog();
