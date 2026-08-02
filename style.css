@@ -71,6 +71,50 @@ header p { color: #777; font-size: 13px; margin-top: 3px; }
     .card img { height: 110px; }
     #searchInput { font-size: 13px; padding: 10px 15px; }
 }
+/* Styling Kolom Search Bar dengan Tombol */
+.search-container {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid #eef0f2;
+    border-radius: 30px;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: #d35400;
+    box-shadow: 0 6px 20px rgba(211, 84, 0, 0.1);
+}
+
+.btn-search {
+    background-color: #d35400;
+    color: #fff;
+    border: none;
+    padding: 0 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 15px rgba(211, 84, 0, 0.2);
+}
+
+.btn-search:hover {
+    background-color: #b84a00;
+}
 /* Styling khusus untuk Logo di Header */
 .logo-img {
     width: 70px;          /* Atur lebar logo (bisa diubah sesuaikan kebutuhan, misal 60px atau 80px) */
