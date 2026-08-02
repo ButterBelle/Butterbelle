@@ -3,20 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Butterbelle</title>
-    <style>
-        /* Agar iframe memenuhi layar dengan rapi */
-        iframe {
-            width: 100%;
-            height: 100vh; /* Tinggi menyesuaikan layar */
-            border: none;
-        }
-    </style>
+    <title>ButterBelle - Katalog Kue</title>
+    <!-- Menghubungkan ke file CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Ganti link di bawah dengan URL Aplikasi Web kamu dari Langkah 3 -->
-    <iframe src="https://script.google.com/macros/s/AKfycbzHfBogJIUrLONPkh4h7qJl-aiRXfbPG5Brayq1otN6CWhUCcDR-KsncloghztomWNK/exec"></iframe>
+    <header>
+        <h1>ButterBelle</h1>
+        <p>Premium Cakes & Pastries</p>
+    </header>
 
+    <div class="container">
+        <div id="loader" class="loader">Memuat katalog kue...</div>
+        <div id="katalog-grid" class="grid"></div>
+    </div>
+
+    <!-- Popup Modal untuk Form Pesanan -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <span class="close-btn" onclick="tutupModal()">&times;</span>
+            <h2>Detail Pesanan</h2>
+            <form id="formPesanan" onsubmit="kirimPesanan(event)">
+                <div class="form-group">
+                    <label>Kue yang dipilih:</label>
+                    <input type="text" id="inputPesanan" readonly required>
+                </div>
+                <div class="form-group">
+                    <label>Nama Anda:</label>
+                    <input type="text" id="inputNama" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <div class="form-group">
+                    <label>Nomor WhatsApp:</label>
+                    <input type="number" id="inputWA" placeholder="Contoh: 081234567890" required>
+                </div>
+                <button type="submit" class="btn-submit" id="btnSubmit">Kirim Pesanan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Menghubungkan ke file JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
