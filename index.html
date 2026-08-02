@@ -20,6 +20,23 @@
         <div id="katalog-grid" class="grid"></div>
     </div>
 
+    <!-- Tombol Hotline & Kerjasama di Bagian Bawah (Footer) -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 ButterBelle. All rights reserved.</p>
+            <div class="footer-buttons">
+                <!-- Tombol Hotline WA -->
+                <a href="https://wa.me/6281234567890?text=Halo%20ButterBelle,%20saya%20ingin%20bertanya%20mengenai%20produk." target="_blank" class="btn-footer btn-hotline">
+                    📞 Hotline CS
+                </a>
+                <!-- Tombol Proposal Kerjasama -->
+                <button onclick="bukaProposal()" class="btn-footer btn-proposal">
+                    📄 Proposal Kerjasama
+                </button>
+            </div>
+        </div>
+    </footer>
+
     <!-- Popup Modal untuk Form Pesanan -->
     <div class="modal-overlay" id="modal">
         <div class="modal">
@@ -40,6 +57,18 @@
                 </div>
                 <button type="submit" class="btn-submit" id="btnSubmit">Kirim Pesanan</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Popup Modal untuk Viewer Proposal (PDF / Dokumen) -->
+    <div class="modal-overlay" id="modalProposal">
+        <div class="modal-proposal-content">
+            <span class="close-btn" onclick="tutupProposal()">&times;</span>
+            <h2>Proposal Kerjasama ButterBelle</h2>
+            <div class="pdf-viewer-container">
+                <!-- Ganti link src di bawah dengan link file PDF kamu (bisa dari Google Drive, Link PDF online, dll) -->
+                <iframe src="https://docs.google.com/viewer?url=https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf&embedded=true" frameborder="0"></iframe>
+            </div>
         </div>
     </div>
 
