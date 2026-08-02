@@ -62,3 +62,12 @@ header p { color: #777; font-size: 13px; margin-top: 3px; }
     .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .card img { height: 110px; }
 }
+/* Styling khusus untuk Logo di Header */
+.logo-img {
+    width: 70px;          /* Atur lebar logo (bisa diubah sesuaikan kebutuhan, misal 60px atau 80px) */
+    height: 70px;         /* Tinggi logo disamakan agar bulat/kotak sempurna */
+    object-fit: contain;  /* Agar gambar tidak gepeng */
+    border-radius: 50%;   /* Opsional: Membuat logo jadi berbentuk lingkaran (hapus baris ini jika ingin logo kotak asli) */
+    margin-bottom: 10px;  /* Jarak antara logo dengan teks judul ButterBelle di bawahnya */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Memberikan efek bayangan lembut */
+}
