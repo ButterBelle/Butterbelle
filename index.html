@@ -18,9 +18,10 @@
     </header>
 
     <div class="container">
-        <!-- Kolom Pencarian (Search Bar) -->
+       <!-- Kolom Pencarian (Search Bar dengan Tombol) -->
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="🔍 Cari menu kue kesukaanmu..." onkeyup="filterKatalog()">
+            <input type="text" id="searchInput" placeholder="🔍 Cari menu kue kesukaanmu..." onkeyup="if(event.key === 'Enter') filterKatalog()">
+            <button onclick="filterKatalog()" class="btn-search">Cari</button>
         </div>
         <div id="loader" class="loader">Memuat katalog ButterBelle...</div>
         <div id="katalog-grid" class="grid"></div>
