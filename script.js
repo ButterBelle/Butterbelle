@@ -1,5 +1,5 @@
 // URL Deployment Apps Script milikmu
-const API_URL = "https://script.google.com/macros/s/AKfycbwpDb67-YhdpWJ0S04TXbLMmop2r8Ii15hsSCdONz8uiZh17u7N9g-oIneoG6DnKQzH/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbz7wmmB5svAHWmZobwzHmC_R-dgTc6StDt-a8Z2g9moERLLccLRxoNzqG1xVAU5cEZw/exec";
 
 // Fungsi untuk format Rupiah
 const formatRupiah = (angka) => {
