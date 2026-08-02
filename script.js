@@ -1,5 +1,5 @@
 // URL Deployment Apps Script milikmu
-const API_URL = "https://script.google.com/macros/s/AKfycbzUqodnKnwh_skwbbGgOR4lWvVMeZDoUuEzLvO3NmtFPlWsAbLkE7uzGbJPzP9-9G5H/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyYT1kUQWsfXmksdK_mxfSvz98BYJtlIUod5yidmtGH148qHwZqqo5p-XdWHM3X7wdg/exec";
 const formatRupiah = (angka) => {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka);
 }
