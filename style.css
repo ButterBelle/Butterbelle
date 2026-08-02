@@ -1,0 +1,38 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background-color: #f9f9f9; color: #333; }
+
+/* Header */
+header { background-color: #fff; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; }
+header h1 { color: #d35400; font-weight: 600; font-size: 28px; }
+header p { color: #777; font-size: 14px; }
+
+/* Grid Katalog */
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 25px; }
+
+/* Card Kue */
+.card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease; text-align: center; padding-bottom: 15px; cursor: pointer; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.card img { width: 100%; height: 200px; object-fit: cover; }
+.card h3 { font-size: 16px; margin: 15px 10px 5px; font-weight: 600; color: #222; }
+.card .harga { color: #555; font-size: 15px; font-weight: 600; }
+.btn-pesan { margin-top: 15px; background: #d35400; color: #fff; border: none; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: background 0.3s; }
+.btn-pesan:hover { background: #b84a00; }
+
+/* Loader */
+.loader { text-align: center; padding: 50px; font-size: 18px; color: #666; }
+
+/* Modal (Popup Form) */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 1000; }
+.modal { background: #fff; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; position: relative; }
+.close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #999; }
+.modal h2 { margin-bottom: 20px; font-size: 20px; text-align: center; color: #333; }
+
+/* Form Input */
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-size: 14px; color: #555; }
+.form-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; outline: none; }
+.form-group input[readonly] { background: #f0f0f0; color: #666; font-weight: 600; }
+.form-group input:focus { border-color: #d35400; }
+.btn-submit { width: 100%; background: #27ae60; color: #fff; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+.btn-submit:hover { background: #219653; }
