@@ -32,7 +32,7 @@ async function muatKatalog() {
 }
 // Fungsi Pencarian (Search Filter)
 function filterKatalog() {
-    const keyword = document.getElementById('searchInput').value.toLowerCase();
+    const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
     const kueTerpilih = semuaKue.filter(kue => 
         kue.nama.toLowerCase().includes(keyword)
     );
