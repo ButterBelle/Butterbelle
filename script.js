@@ -1,5 +1,5 @@
 // URL Deployment Apps Script Anda
-const API_URL = "https://script.google.com/macros/s/AKfycbxTfKkNsLHhpHFkCNSa2mhuc3P7meuCXQZ9XTO8C9nuluZK1ZhTFYvaL2kpHZ4t6evV/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyiYKChHs4zbpldFygYwM52i5z3UhJv-6byNDHTYY6HVg4toeP8cIp1cx6teKwXWhJE/exec";
 
 let semuaKue = [];
 
