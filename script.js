@@ -1,4 +1,3 @@
-// URL Deployment Apps Script Anda
 const API_URL = "https://script.google.com/macros/s/AKfycbyiYKChHs4zbpldFygYwM52i5z3UhJv-6byNDHTYY6HVg4toeP8cIp1cx6teKwXWhJE/exec";
 
 let semuaKue = [];
@@ -12,18 +11,19 @@ async function muatKatalog() {
         const response = await fetch(API_URL);
         const data = await response.json();
         
-        // Membersihkan dan menyamakan data dari Google Sheets (tahan banting dari undefined)
+        // Membaca data secara fleksibel dari kolom mana pun di Google Sheets
         semuaKue = data.map(item => {
-            const normalized = {};
-            for (let key in item) {
-                if (item.hasOwnProperty(key)) {
-                    normalized[key.toLowerCase().trim()] = item[key];
-                }
-            }
+            const keys = Object.keys(item);
+            
+            // Mencari kolom yang kira-kira berisi Nama, Harga, dan Gambar
+            let namaKey = keys.find(k => k.toLowerCase().includes('nama') || k.toLowerCase().includes('menu')) || keys[0];
+            let hargaKey = keys.find(k => k.toLowerCase().includes('harga')) || keys[1];
+            let gambarKey = keys.find(k => k.toLowerCase().includes('gambar') || k.toLowerCase().includes('link') || k.toLowerCase().includes('foto')) || keys[2];
+
             return {
-                nama: normalized['nama'] || normalized['namakue'] || normalized['menu'] || 'Menu ButterBelle',
-                harga: normalized['harga'] || normalized['hargakue'] || 0,
-                gambar: normalized['gambar'] || normalized['linkgambar'] || normalized['link'] || ''
+                nama: item[namaKey] || "Menu Kue",
+                harga: item[hargaKey] || 0,
+                gambar: item[gambarKey] || ""
             };
         });
         
@@ -52,7 +52,7 @@ function tampilkanKatalog(dataKue) {
             <div class="card-body">
                 <h3>${kue.nama}</h3>
                 <p class="harga">${formatRupiah(kue.harga)}</p>
-                <button class="btn-pesan" onclick="bukaModal('${kue.nama.replace(/'/g, "\\'")}')">Pesan Sekarang</button>
+                <button class="btn-pesan" onclick="bukaModal('${String(kue.nama).replace(/'/g, "\\'")}')">Pesan Sekarang</button>
             </div>
         `;
         grid.appendChild(card);
@@ -62,7 +62,7 @@ function tampilkanKatalog(dataKue) {
 function filterKatalog() {
     const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
     const hasilFilter = semuaKue.filter(kue => 
-        kue.nama.toLowerCase().includes(keyword)
+        String(kue.nama).toLowerCase().includes(keyword)
     );
     tampilkanKatalog(hasilFilter);
 }
@@ -133,5 +133,4 @@ function tampilkanNotifikasi(pesan) {
     }, 4000);
 }
 
-// Jalankan saat halaman dimuat
 muatKatalog();
