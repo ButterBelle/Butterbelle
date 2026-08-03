@@ -44,7 +44,7 @@
         </div>
     </footer>
 
-    <!-- Popup Modal untuk Form Pesanan -->
+  <!-- Popup Modal untuk Form Pesanan -->
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <span class="close-btn" onclick="tutupModal()">&times;</span>
@@ -61,6 +61,11 @@
                 <div class="form-group">
                     <label>Nomor WhatsApp:</label>
                     <input type="number" id="inputWA" placeholder="Contoh: 081234567890" required>
+                </div>
+                <!-- Kolom Tambahan untuk Keterangan/Catatan -->
+                <div class="form-group">
+                    <label>Keterangan / Catatan (Opsional):</label>
+                    <input type="text" id="inputKeterangan" placeholder="Contoh: Tulisan 'Happy Birthday Yuda'">
                 </div>
                 <button type="submit" class="btn-submit" id="btnSubmit">Kirim Pesanan</button>
             </form>
