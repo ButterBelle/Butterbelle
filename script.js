@@ -1,5 +1,5 @@
 // URL Deployment Apps Script milikmu
-const API_URL = "https://script.google.com/macros/s/AKfycbx2EWT0m4mZkZH71bbHIrKoKmSDgx4Lglt0mmPuOY1Ji6tpks4kaUbdMxM8Qx3PTTdu/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxTfKkNsLHhpHFkCNSa2mhuc3P7meuCXQZ9XTO8C9nuluZK1ZhTFYvaL2kpHZ4t6evV/exec";
 
 let semuaKue = []; // Menyimpan master data untuk pencarian
 
