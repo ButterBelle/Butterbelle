@@ -101,7 +101,8 @@ async function kirimPesanan(event) {
     const dataPesanan = {
         nama: document.getElementById('inputNama').value,
         nowa: document.getElementById('inputWA').value,
-        pesanan: document.getElementById('inputPesanan').value
+        pesanan: document.getElementById('inputPesanan').value,
+        keterangan: document.getElementById('inputKeterangan').value // Mengambil data keterangan
     };
 
     try {
