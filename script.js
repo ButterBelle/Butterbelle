@@ -11,19 +11,7 @@ async function muatKatalog() {
         const response = await fetch(API_URL);
         const data = await response.json();
         
-        // Normalisasi data agar aman dari perbedaan huruf besar/kecil dari Sheets
-        semuaKue = data.map(item => {
-            const normalized = {};
-            for (let key in item) {
-                normalized[key.toLowerCase().trim()] = item[key];
-            }
-            return {
-                nama: normalized['nama'] || normalized['namakue'] || 'Menu Kue',
-                harga: normalized['harga'] || 0,
-                gambar: normalized['gambar'] || normalized['linkgambar'] || ''
-            };
-        });
-        
+        semuaKue = data;
         document.getElementById('loader').style.display = 'none';
         tampilkanKatalog(semuaKue);
     } catch (error) {
@@ -42,14 +30,19 @@ function tampilkanKatalog(dataKue) {
 
     dataKue.forEach(kue => {
         const card = document.createElement('div');
-        card.className = 'card card-skeleton';
+        card.className = 'card';
         
+        // Mengambil data langsung sesuai nama kolom umum di Sheets: nama, harga, gambar
+        const namaKue = kue.nama || kue.Nama || kue.MENU || "Menu Kue";
+        const hargaKue = kue.harga || kue.Harga || 0;
+        const gambarKue = kue.gambar || kue.Gambar || kue.LINK || "";
+
         card.innerHTML = `
-            <img src="${kue.gambar}" alt="${kue.nama}" onload="this.classList.remove('card-skeleton')" onerror="this.src='https://via.placeholder.com/200?text=Foto+Kue'">
+            <img src="${gambarKue}" alt="${namaKue}" onerror="this.src='https://via.placeholder.com/200?text=Foto+Kue'">
             <div class="card-body">
-                <h3>${kue.nama}</h3>
-                <p class="harga">${formatRupiah(kue.harga)}</p>
-                <button class="btn-pesan" onclick="bukaModal('${kue.nama.replace(/'/g, "\\'")}')">Pesan Sekarang</button>
+                <h3>${namaKue}</h3>
+                <p class="harga">${formatRupiah(hargaKue)}</p>
+                <button class="btn-pesan" onclick="bukaModal('${namaKue.replace(/'/g, "\\'")}')">Pesan Sekarang</button>
             </div>
         `;
         grid.appendChild(card);
@@ -58,9 +51,10 @@ function tampilkanKatalog(dataKue) {
 
 function filterKatalog() {
     const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
-    const hasilFilter = semuaKue.filter(kue => 
-        kue.nama.toLowerCase().includes(keyword)
-    );
+    const hasilFilter = semuaKue.filter(kue => {
+        const nama = kue.nama || kue.Nama || kue.MENU || "";
+        return nama.toLowerCase().includes(keyword);
+    });
     tampilkanKatalog(hasilFilter);
 }
 
