@@ -139,5 +139,30 @@ function tampilkanNotifikasi(pesan) {
     }, 4000);
 }
 
+// Fungsi untuk menampilkan kartu kue ke HTML dengan efek elegan
+function tampilkanKatalog(dataKue) {
+    const grid = document.getElementById('katalog-grid');
+    grid.innerHTML = ""; // Bersihkan grid sebelum diisi ulang
+
+    if (!dataKue || dataKue.length === 0) {
+        grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #888; padding: 30px;">Menu kue tidak ditemukan.</p>`;
+        return;
+    }
+
+    dataKue.forEach(kue => {
+        const card = document.createElement('div');
+        card.className = 'card card-skeleton'; // Menambahkan efek skeleton
+        
+        card.innerHTML = `
+            <img src="${kue.gambar}" alt="${kue.nama}" onload="this.classList.remove('card-skeleton')" onerror="this.src='https://via.placeholder.com/200?text=Foto+Kue'">
+            <div class="card-body">
+                <h3>${kue.nama}</h3>
+                <p class="harga">${formatRupiah(kue.harga)}</p>
+                <button class="btn-pesan" onclick="bukaModal('${kue.nama}')">Pesan Sekarang</button>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
 // Jalankan saat halaman dimuat
 muatKatalog();
