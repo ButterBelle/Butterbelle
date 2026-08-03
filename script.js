@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbxTfKkNsLHhpHFkCNSa2mhuc3P7meuCXQZ9XTO8C9nuluZK1ZhTFYvaL2kpHZ4t6evV/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxFJAwEvKmH6WXft2Nmdl7WutewxprOStxAH7iiOTfu8LfU_J3eJIygA-LCcD02Q1aD/exec";
 
 let semuaKue = [];
 
