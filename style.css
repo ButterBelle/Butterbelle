@@ -124,3 +124,27 @@ header p { color: #777; font-size: 13px; margin-top: 3px; }
     margin-bottom: 10px;  /* Jarak antara logo dengan teks judul ButterBelle di bawahnya */
     box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Memberikan efek bayangan lembut */
 }
+/* Efek Visual Loading (Skeleton Animation) */
+@keyframes skeleton-loading {
+    0% { background-color: #f0f0f0; }
+    50% { background-color: #e0e0e0; }
+    100% { background-color: #f0f0f0; }
+}
+
+/* Kelas untuk kartu saat sedang proses memuat */
+.card-skeleton img {
+    animation: skeleton-loading 1.2s infinite ease-in-out;
+    background-color: #f0f0f0;
+    color: transparent;
+}
+
+.skeleton-text {
+    height: 14px;
+    border-radius: 4px;
+    animation: skeleton-loading 1.2s infinite ease-in-out;
+    margin-bottom: 8px;
+}
+
+.skeleton-title { width: 70%; }
+.skeleton-price { width: 40%; margin-bottom: 15px; }
+.skeleton-btn { height: 32px; border-radius: 6px; animation: skeleton-loading 1.2s infinite ease-in-out; }
