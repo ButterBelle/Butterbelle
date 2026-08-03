@@ -11,19 +11,13 @@ async function muatKatalog() {
         const response = await fetch(API_URL);
         const data = await response.json();
         
-        // Membaca data secara fleksibel dari kolom mana pun di Google Sheets
+        // Memetakan data persis sesuai posisi kolom pada screenshot kamu:
+        // col1 = Nama Kue, col3 = Harga, col4 = Link Gambar
         semuaKue = data.map(item => {
-            const keys = Object.keys(item);
-            
-            // Mencari kolom yang kira-kira berisi Nama, Harga, dan Gambar
-            let namaKey = keys.find(k => k.toLowerCase().includes('nama') || k.toLowerCase().includes('menu')) || keys[0];
-            let hargaKey = keys.find(k => k.toLowerCase().includes('harga')) || keys[1];
-            let gambarKey = keys.find(k => k.toLowerCase().includes('gambar') || k.toLowerCase().includes('link') || k.toLowerCase().includes('foto')) || keys[2];
-
             return {
-                nama: item[namaKey] || "Menu Kue",
-                harga: item[hargaKey] || 0,
-                gambar: item[gambarKey] || ""
+                nama: item.col1 || "Menu Tanpa Nama",
+                harga: item.col3 || 0,
+                gambar: item.col4 || ""
             };
         });
         
