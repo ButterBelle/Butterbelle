@@ -167,10 +167,10 @@ header p { color: #777; font-size: 13px; margin-top: 3px; }
 
 /* Ukuran Logo Halal */
 .logo-halal {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     object-fit: contain;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 /* Jika ingin posisinya persis di pojok kanan/kiri luar */
