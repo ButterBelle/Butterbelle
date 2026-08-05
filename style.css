@@ -148,3 +148,49 @@ header p { color: #777; font-size: 13px; margin-top: 3px; }
 .skeleton-title { width: 70%; }
 .skeleton-price { width: 40%; margin-bottom: 15px; }
 .skeleton-btn { height: 32px; border-radius: 6px; animation: skeleton-loading 1.2s infinite ease-in-out; }
+/* Pengaturan Layout Header agar bisa sejajar dengan Logo Halal */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.logo-title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ukuran Logo Halal */
+.logo-halal {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+/* Jika ingin posisinya persis di pojok kanan/kiri luar */
+.logo-halal.right {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo-halal.left {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 480px) {
+    .logo-halal {
+        width: 35px;
+        height: 35px;
+    }
+}
