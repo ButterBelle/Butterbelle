@@ -167,8 +167,8 @@ header p { color: #777; font-size: 13px; margin-top: 3px; }
 
 /* Ukuran Logo Halal */
 .logo-halal {
-    width: 75px;
-    height: 75px;
+    width: 125px;
+    height: 125px;
     object-fit: contain;
     border-radius: 8px;
 }
@@ -190,7 +190,7 @@ header p { color: #777; font-size: 13px; margin-top: 3px; }
 
 @media (max-width: 480px) {
     .logo-halal {
-        width: 35px;
-        height: 35px;
+        width: 100px;
+        height: 100px;
     }
 }
